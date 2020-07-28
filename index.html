@@ -5,8 +5,41 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <title>Boolzap</title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css">
+        <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
+        <div class="container">
+            <div class="side-sx">
+                <div class="id-menu">
+                    <div class="user-logo">
+                        <img src="img/user-logo.png" alt="User Logo">
+                    </div>
+                    <div class="user-options">
+                        <i class="fas fa-circle-notch"></i>
+                        <i class="fas fa-comment-alt"></i>
+                        <i class="fas fa-ellipsis-v"></i>
+                    </div>
+                </div>
+                <div class="notifiche-bar">
+                    <i class="fas fa-bell-slash"></i>
+                    <div class="notifiche-text">
+                        <p>Ricevi notifiche di nuovi messaggi</p>
+                        <a href="#">Attiva notifiche desktop</a>
+                    </div>
+                </div>
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="search" name="search" placeholder="Cerca o inizia una nuova chat"><br>
+                </div>
+                <div class="chat-list"></div>
+            </div>
+            <div class="side-dx">
+                <div class="user-bar"></div>
+                <div class="messages-box"></div>
+                <div class="input-bar"></div>
+            </div>
+        </div>
 
 
         <script src="js/script.js" charset="utf-8"></script>
