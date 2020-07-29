@@ -9,12 +9,68 @@ body {
     background: linear-gradient(to bottom, #00bfa5 15%, #d4dbd9 0%);
 }
 
+input:focus {
+    outline: none;
+}
+
 .container {
     width: 80%;
     margin: 40px auto;
     display: flex;
     flex-direction: row;
 }
+
+/*GENERIC LOGO*/
+
+.logo {
+    height: 50px;
+    padding: 0 10px;
+}
+
+.logo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+/* END GENERIC LOGO */
+
+/* GENERIC MESSAGE LAYOUT */
+
+.message {
+    max-width: 40%;
+    max-height: 30%;
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin: 5px 40px;
+}
+
+.message-top {
+    display: flex;
+    justify-content: center;
+}
+
+.message-bottom {
+    display:flex;
+    justify-content: flex-end;
+    padding-top: 5px;
+    font-size: 12px;
+    color: grey;
+}
+
+.sent {
+    background-color: #d5f9ba;
+    float: right;
+    clear:both;
+}
+
+.received {
+    background-color: white;
+    float:left;
+    clear:both;
+}
+
+/* END GENERIC MESSAGE LAYOUT */
 
 /* SEZIONE SINISTRA */
 .side-sx {
@@ -37,14 +93,14 @@ body {
 }
 
 .user-logo {
-    height: 50px;
+    padding: 0;
 }
 
-.user-logo img {
+/* .user-logo img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-}
+} */
 
 .user-options .fas {
     font-size: 20px;
@@ -111,6 +167,7 @@ body {
     width: 320px;
     height: 22px;
     border:0;
+    padding-left: 7px;
 }
 
 /* Sezione elenco chat attive */
@@ -123,7 +180,7 @@ body {
     flex-direction: column;
 }
 
-.chat-list .contact-box {
+.ct-box {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -138,6 +195,7 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
+    color: grey;
 }
 
 .active {
@@ -148,6 +206,10 @@ body {
     color: black;
     font-weight: bold;
     font-size: 15px;
+}
+
+.ct-box small {
+    padding-right: 7px;
 }
 
 /* SEZIONE DESTRA  */
@@ -175,7 +237,7 @@ body {
     flex-direction: row;
 }
 
-.contact-logo {
+/* .contact-logo {
     height: 50px;
 }
 
@@ -184,7 +246,7 @@ body {
     height: 50px;
     border-radius: 50%;
     margin: 0 15px;
-}
+} */
 
 .contact-data {
     display:flex;
@@ -214,38 +276,6 @@ body {
     overflow-y:scroll;
 }
 
-.message {
-    max-width: 40%;
-    max-height: 30%;
-    border-radius: 10px;
-    padding: 5px 10px;
-    margin: 5px 40px;
-}
-
-.message-top {
-    display: flex;
-    justify-content: center;
-}
-
-.message-bottom {
-    display:flex;
-    justify-content: flex-end;
-    padding-top: 5px;
-    font-size: 12px;
-    color: grey;
-}
-
-.sent {
-    background-color: #d5f9ba;
-    float: right;
-    clear:both;
-}
-
-.received {
-    background-color: white;
-    float:left;
-    clear:both;
-}
 
 /* ADD MESSAGE BAR */
 

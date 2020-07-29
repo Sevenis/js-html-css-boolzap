@@ -8,7 +8,7 @@ $('#add-message').keydown(aggiungi);
 //** FUNZIONI
 
 function aggiungi() {
-        if(event.which == 13 || event.keyCode == 13){
+        if(event.which == 13 || event.keyCode == 13 ){
             var d = new Date();
             var testo = $('#add-message').val();
             var messaggio = $('.template .message').clone();
@@ -32,7 +32,7 @@ function risposta() {
                 "Do you want to figure it out?"
             ]
 
-            var index = randomNumber(1,7);
+            var index = randomNumber(0,6);
             var testo = listaRisposte[index];
             console.log(testo);
             var d = new Date();
