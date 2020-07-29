@@ -1,49 +1,84 @@
 $(document).ready(function(){
 
-$('#add-message').keydown(aggiungi);
-
-
+    //aggiunge messaggio premendo INVIO
+    $('#add-message').keydown(function(event){
+        if(event.which == 13 || event.keyCode == 13 ){
+            aggiungiMessaggio();
+        }
+    });
+    //aggiunge messaggio cliccando sull'icona "SEND"
+    $('.fa-paper-plane').click(function(){
+        aggiungiMessaggio();
+    });
 });
 
-//** FUNZIONI
 
-function aggiungi() {
-        if(event.which == 13 || event.keyCode == 13 ){
-            var d = new Date();
-            var testo = $('#add-message').val();
-            var messaggio = $('.template .message').clone();
+//** FUNZIONI **//
 
-            messaggio.find('.message-text').append(testo);
-            messaggio.find('small').append(d.getHours()+':'+d.getMinutes());
-            messaggio.addClass('sent');
-            $('.messages-box').append(messaggio);
-            setTimeout(risposta, 1000);
-        }
+// funzione che estrapola il msg digitato e lo stampa a video
+// nella sezione "MESSAGE-BOX" in un template clonato stilizzato
+function aggiungiMessaggio() {
+    var testo = $('#add-message').val();
+    //check per inibire l'invio di msg vuoti
+    if(testo != 0){
+        //salvo il testo inviato e poi cancello l'input post invio
+        // var testo = $('#add-message').val();
+        $('#add-message').val('');
+
+        //clono il template del messaggio
+        var messaggio = $('.template .message').clone();
+
+        // incollo i dati estrapolati nel template clonato
+        messaggio.find('.message-text').append(testo);
+        messaggio.find('small').append(oraEsatta());
+        messaggio.addClass('sent');
+        //incollo il template clonato messaggio riempito nel message box
+        $('.messages-box').append(messaggio);
+        //dopo 1 secondo attiva la funzione risposta()
+        setTimeout(risposta, 1000);
+    }
 }
 
+// funzione che restituisce a video nella sezione "MESSAGE-BOX"
+// una risposta automatica gia' stilizzata
 function risposta() {
-            var listaRisposte = [
-                "If anyone asks where I am, I’ve left the country.",
-                "If we’re both going crazy, then we’ll go crazy together, right?",
-                "The campaign took two weeks to plan. How was I supposed to know it was going to take ten hours?",
-                "Maybe you thought you were helping, but you weren’t. You hurt me, do you understand? What you did sucks.",
-                "We’re not even in the game; we’re on the bench.",
-                "Hey, if we’re both going crazy, we’ll go crazy together, right?",
-                "Do you want to figure it out?"
-            ]
+    var listaRisposte = [
+        "If anyone asks where I am, I’ve left the country.",
+        "If we’re both going crazy, then we’ll go crazy together, right?",
+        "The campaign took two weeks to plan. How was I supposed to know it was going to take ten hours?",
+        "Maybe you thought you were helping, but you weren’t. You hurt me, do you understand? What you did sucks.",
+        "We’re not even in the game; we’re on the bench.",
+        "Hey, if we’re both going crazy, we’ll go crazy together, right?",
+        "Do you want to figure it out?"
+    ]
 
-            var index = randomNumber(0,6);
-            var testo = listaRisposte[index];
-            console.log(testo);
-            var d = new Date();
-            var messaggio = $('.template .message').clone();
+    var index = randomNumber(0,6);
+    var testo = listaRisposte[index];
 
-            messaggio.find('.message-text').append(testo);
-            messaggio.find('small').append(d.getHours()+':'+d.getMinutes());
-            messaggio.addClass('received');
-            $('.messages-box').append(messaggio);
+    // clono il template del messaggio
+    var messaggio = $('.template .message').clone();
+
+    //incollo tutti i dati estrapolati nel template clonato
+    messaggio.find('.message-text').append(testo);
+    messaggio.find('small').append(oraEsatta());
+    messaggio.addClass('received');
+    //incollo il template clonato messaggio riempito nel message box
+    $('.messages-box').append(messaggio);
 }
 
+// funzione che genera un numero random in un intervallo (incluso)
 function randomNumber (min,max){
     return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+// funzione che recupera l'ora dell'invio/ricezione del msg
+function oraEsatta() {
+    var d = new Date();
+    var oraInvio = d.getHours();
+    if (d.getMinutes() < 10) {
+        var minutoInvio = d.getMinutes()+'0';
+    } else {
+        var minutoInvio = d.getMinutes();
+    }
+    return oraInvio + ':' + minutoInvio;
 }

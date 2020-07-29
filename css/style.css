@@ -7,6 +7,7 @@
 body {
     height: 100vh;
     background: linear-gradient(to bottom, #00bfa5 15%, #d4dbd9 0%);
+    padding: 10vh 0;
 }
 
 input:focus {
@@ -14,8 +15,9 @@ input:focus {
 }
 
 .container {
+    height: 80vh;
     width: 80%;
-    margin: 40px auto;
+    margin: 0 auto;
     display: flex;
     flex-direction: row;
 }
@@ -75,7 +77,7 @@ input:focus {
 /* SEZIONE SINISTRA */
 .side-sx {
     width: 460px;
-    height: 700px;
+    /* height: 700px; */
     background-color: yellow;
     display: flex;
     flex-direction: column;
@@ -95,12 +97,6 @@ input:focus {
 .user-logo {
     padding: 0;
 }
-
-/* .user-logo img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-} */
 
 .user-options .fas {
     font-size: 20px;
@@ -215,7 +211,7 @@ input:focus {
 /* SEZIONE DESTRA  */
 .side-dx {
     display: flex;
-    height: 700px;
+    /* height: 700px; */
     width: 1400px;
     background-color: red;
     flex-direction: column;
@@ -236,17 +232,6 @@ input:focus {
     display: flex;
     flex-direction: row;
 }
-
-/* .contact-logo {
-    height: 50px;
-}
-
-.contact-logo img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin: 0 15px;
-} */
 
 .contact-data {
     display:flex;
