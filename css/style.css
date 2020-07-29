@@ -34,6 +34,9 @@ body {
     padding: 0 10px;
 }
 
+.user-logo {
+    height: 50px;
+}
 
 .user-logo img {
     width: 50px;
@@ -47,10 +50,10 @@ body {
     color: grey;
 }
 
-
+/* BAR NOTIFICHE */
 .notifiche-bar {
     width: 100%;
-    height: 70px;
+    height: 50px;
     background-color: #9DE1FE;
     display: flex;
     flex-direction: row;
@@ -68,6 +71,11 @@ body {
     margin-right: 10px;
 }
 
+.notifiche-text {
+    display: flex;
+    flex-direction: column;
+}
+
 .notifiche-bar .notifiche-text p {
     font-size: 13px;
     font-weight: bold;
@@ -75,11 +83,13 @@ body {
 
 .notifiche-bar .notifiche-text a {
     font-size: 11px;
+    text-decoration: none;
 }
 
+/* SEARCH BAR */
 .search-bar {
     width: 100%;
-    height: 50px;
+    height: 45px;
     background-color: white;
     display: flex;
     align-items: center;
@@ -97,18 +107,51 @@ body {
 
 .search-bar #search {
     width: 320px;
-    height: 25px;
+    height: 22px;
     border:0;
 }
 
 .chat-list {
     width: 100%;
-    height: calc(100% - 190px);
-    background-color: tomato;
+    height: calc(100% - 165px);
+    background-color: white;
     display: flex;
     overflow-y: scroll;
+    flex-direction: column;
 }
 
+.chat-list .contact-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    padding-right: 5px;
+    font-size: 12px;
+    border-bottom: 1px solid lightgrey;
+}
+
+.ct-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.active {
+    background-color: lightgrey;
+}
+
+#c-name {
+    color: black;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+
+
+
+
+/* SEZIONE DESTRA  */
 .side-dx {
     display: flex;
     height: 800px;
@@ -132,6 +175,10 @@ body {
     flex-direction: row;
 }
 
+.contact-logo {
+    height: 50px;
+}
+
 .contact-logo img {
     width: 50px;
     height: 50px;
@@ -143,6 +190,7 @@ body {
     display:flex;
     flex-direction: column;
     color: grey;
+    justify-content: center;
 }
 
 .contact-data #contact-name {
@@ -161,7 +209,43 @@ body {
     height: calc(100% - 140px);
     background-image: url(../img/bg_image_txt.png);
     background-size: cover;
+    overflow-y:scroll;
 }
+
+.message {
+    max-width: 20%;
+    max-height: 20%;
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin: 5px 40px;
+}
+
+.message-top {
+    display: flex;
+    justify-content: center;
+}
+
+.message-bottom {
+    display:flex;
+    justify-content: flex-end;
+    padding-top: 5px;
+    font-size: 12px;
+    color: grey;
+}
+
+.sent {
+    background-color: #d5f9ba;
+    float: right;
+    clear:both;
+}
+
+.received {
+    background-color: white;
+    float:left;
+    clear:both;
+}
+
+/* ADD MESSAGE BAR */
 
 .input-bar {
     width: 100%;
@@ -175,9 +259,16 @@ body {
     font-size: 20px;
 }
 
-.input-bar #message {
+.input-bar #add-message {
     width: 90%;
     height: 40px;
     padding-left: 10px;
     border:0;
+    border-radius: 20px;
+}
+
+/* TEMPLATE */
+
+.template {
+    display: none;
 }
