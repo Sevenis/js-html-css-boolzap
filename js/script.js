@@ -76,7 +76,7 @@ function oraEsatta() {
     var d = new Date();
     var oraInvio = d.getHours();
     if (d.getMinutes() < 10) {
-        var minutoInvio = d.getMinutes()+'0';
+        var minutoInvio = '0' + d.getMinutes();
     } else {
         var minutoInvio = d.getMinutes();
     }
