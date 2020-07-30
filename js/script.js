@@ -10,6 +10,13 @@ $(document).ready(function(){
     $('.fa-paper-plane').click(function(){
         aggiungiMessaggio();
     });
+
+    //al click cambia chat
+    $('.ct-box').click(function(){
+        //trovo la posizione della chat cliccata
+        var posizione = $(this).index();
+        cambioChat(posizione);
+    });
 });
 
 
@@ -33,7 +40,7 @@ function aggiungiMessaggio() {
         messaggio.find('small').append(oraEsatta());
         messaggio.addClass('sent');
         //incollo il template clonato messaggio riempito nel message box
-        $('.messages-box').append(messaggio);
+        $('.messages-box.active').append(messaggio);
         //dopo 1 secondo attiva la funzione risposta()
         setTimeout(risposta, 1000);
     }
@@ -63,8 +70,22 @@ function risposta() {
     messaggio.find('small').append(oraEsatta());
     messaggio.addClass('received');
     //incollo il template clonato messaggio riempito nel message box
-    $('.messages-box').append(messaggio);
+    $('.messages-box.active').append(messaggio);
 }
+
+// funzione che cambia chat al click sull'elenco chat aperte
+function cambioChat(indice){
+
+    //a tutte le chat della classe chat-list rimuovo
+    //la classe "active"
+    $('.ct-box.active').removeClass('active');
+    $('.messages-box').removeClass('active');
+    //aggiungo la classe active alla chat che ha
+    //l'indice salvato in posizione
+    $('.ct-box').eq(indice).addClass('active');
+    $('.messages-box').eq(indice).addClass('active');
+}
+
 
 // funzione che genera un numero random in un intervallo (incluso)
 function randomNumber (min,max){
