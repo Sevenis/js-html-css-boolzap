@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+//INVIO MESSAGGIO//
     //aggiunge messaggio premendo INVIO
     $('#add-message').keydown(function(event){
         if(event.which == 13 || event.keyCode == 13 ){
@@ -11,7 +11,22 @@ $(document).ready(function(){
         aggiungiMessaggio();
     });
 
-    //al click cambia chat
+//RICERCA CONTATTO-CHAT//
+    $('#search').keyup(function(event){
+        var ricerca = $('#search').val().toLowerCase();
+        $('.ct-box').each( function() {
+            var check = $(this).find('.c-name').text().toLowerCase().includes(ricerca);
+
+            if (check != true){
+                $(this).hide();
+            } else {
+                $(this).show();
+            }
+        });
+    });
+
+
+//CAMBIO CHAT CON UN CLICK//
     $(document).on('click', '.ct-box', function(){
         //trovo la posizione della chat cliccata
         var posizione = $(this).index();
@@ -41,6 +56,18 @@ function aggiungiMessaggio() {
         messaggio.addClass('sent');
         //incollo il template clonato messaggio riempito nel message box
         $('.messages-box.active').append(messaggio);
+
+        //applico un'anteprima dell'ultimo msg + l'ora esatta invio
+        //nella lista chat di sx come ultima interazione
+        if (testo.length < 50){
+            var previewText = testo;
+        } else {
+            var previewText = testo.substring(0,49) + '...';
+        }
+
+        $('.ct-box.active .last-msg').text(previewText);
+        $('.ct-box.active small').text(oraEsatta());
+
         //dopo 1 secondo attiva la funzione risposta()
         setTimeout(risposta, 1000);
     }
@@ -71,11 +98,21 @@ function risposta() {
     messaggio.addClass('received');
     //incollo il template clonato messaggio riempito nel message box
     $('.messages-box.active').append(messaggio);
+
+    //applico un'anteprima dell'ultimo msg + l'ora esatta invio
+    //nella lista chat di sx come ultima interazione
+    if (testo.length < 50){
+        var previewText = testo;
+    } else {
+        var previewText = testo.substring(0,49) + '...';
+    }
+
+    $('.ct-box.active .last-msg').text(previewText);
+    $('.ct-box.active small').text(oraEsatta());
 }
 
 // funzione che cambia chat al click sull'elenco chat aperte
 function cambioChat(indice){
-
     //a tutte le chat della classe chat-list rimuovo
     //la classe "active"
     $('.ct-box.active').removeClass('active');
@@ -85,13 +122,12 @@ function cambioChat(indice){
     $('.ct-box').eq(indice).addClass('active');
     $('.messages-box').eq(indice).addClass('active');
 
-    //switch del nome in base alla chat selezionata
+    //switch del nome + avatar in base alla chat selezionata
     var nome = $('.ct-box.active').find('.c-name').text();
     var avatar = $('.ct-box.active img').attr('src');
     $('.contact-name').text(nome);
     $('.contact-info img').attr('src', avatar);
 }
-
 
 // funzione che genera un numero random in un intervallo (incluso)
 function randomNumber (min,max){
