@@ -38,11 +38,13 @@ input:focus {
 
 /* GENERIC MESSAGE LAYOUT */
 .message {
+    min-width: 30%;
     max-width: 40%;
-    max-height: 30%;
+    /* max-height: 30%; */
     border-radius: 10px;
     padding: 5px 10px;
     margin: 5px 40px;
+    word-wrap: break-word;
 }
 
 .message-top {
@@ -196,7 +198,7 @@ input:focus {
     color: grey;
 }
 
-#c-name {
+.c-name {
     color: black;
     font-weight: bold;
     font-size: 15px;
@@ -238,7 +240,7 @@ input:focus {
     justify-content: center;
 }
 
-.contact-data #contact-name {
+.contact-data .contact-name {
     color: black;
     font-weight: bold;
 }

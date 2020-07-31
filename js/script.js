@@ -12,7 +12,7 @@ $(document).ready(function(){
     });
 
     //al click cambia chat
-    $('.ct-box').click(function(){
+    $(document).on('click', '.ct-box', function(){
         //trovo la posizione della chat cliccata
         var posizione = $(this).index();
         cambioChat(posizione);
@@ -84,6 +84,12 @@ function cambioChat(indice){
     //l'indice salvato in posizione
     $('.ct-box').eq(indice).addClass('active');
     $('.messages-box').eq(indice).addClass('active');
+
+    //switch del nome in base alla chat selezionata
+    var nome = $('.ct-box.active').find('.c-name').text();
+    var avatar = $('.ct-box.active img').attr('src');
+    $('.contact-name').text(nome);
+    $('.contact-info img').attr('src', avatar);
 }
 
 
